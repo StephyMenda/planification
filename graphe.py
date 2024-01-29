@@ -8,24 +8,22 @@ import matplotlib.pyplot as plt
 import pandas as pd
 class graphe:
     # Constructeur de la classe
-    def __init__(self, path):
-        self.path = path
+    def __init__(self, data):
+        self.data = data
 
     def modelisation(self):
-        reseau = pd.read_csv(self.path)
+        #reseau = pd.read_csv(self.path)
         G = nx.Graph()
         # Ajouter les arêtes au graphe à partir du dataset (adaptez en fonction de votre structure CSV)
-        for index, row in reseau.iterrows():
+        for index, row in self.data.iterrows():
             G.add_edge(row['id_batiment'], row['infra_id'], weight=row['longueur'])
-
-        # Dessiner le graphe (adaptez en fonction de vos besoins spécifiques)
         pos = nx.spring_layout(G)
-        #nx.draw(G, pos, with_labels=True, font_weight='bold', node_size=700, node_color='skyblue', arrowsize=20)
-        nx.draw(G, pos, font_weight='bold', node_size=700, node_color='skyblue', arrowsize=20)
+        nx.draw(G, pos, with_labels=True, font_weight='bold', node_size=700, node_color='skyblue', arrowsize=20)
+        #nx.draw(G, pos, font_weight='bold', node_size=700, node_color='skyblue', arrowsize=20)
 
         # Ajouter les poids sur les arêtes
-        # edge_labels = nx.get_edge_attributes(G, 'weight')
-        # nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+        edge_labels = nx.get_edge_attributes(G, 'weight')
+        nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
 
         # Afficher le graphe
         plt.show()

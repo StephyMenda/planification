@@ -22,4 +22,5 @@ class metrique:
 
        # Suppression des doublons basés sur la colonne correspondante
        df = df.drop_duplicates(subset='id_batiment', keep='first')
+       return df
        print(df)

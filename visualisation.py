@@ -13,11 +13,13 @@ infrastructure = gpd.read_file(path)
 # print(infrastructure)
 batiment = gpd.read_file("C:\\Hetic\\MD4\\python\\projet\\planification\\data\\batiments.shp")
 reseau = pd.read_csv("C:\\Hetic\\MD4\\python\\projet\\planification\\data\\reseau_en_arbre.csv")
+infrastructure= gpd.read_file("C:\\Hetic\\MD4\\python\\projet\\planification\\data\\infrastructures.shp")
 print(reseau)
+print(infrastructure)
 #print(batiment.head())
 print(infrastructure.head())
 # Grouper par la colonne 1 et compter le nombre de lignes dans chaque groupe
-result = reseau.groupby('id_batiment').size().reset_index(name='Nombre_de_lignes')
+result = reseau.groupby('infra_id').size().reset_index(name='Nombre_de_lignes')
 
 # Afficher le résultat
 print(result)
