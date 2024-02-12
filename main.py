@@ -8,5 +8,6 @@ if __name__ == '__main__':
     batiment=batiment(reseau)
     list=reseau.radd("E000001")
     df=batiment.badd()
-    print(df.head())
+    liste=batiment.list_batiment()
+    print(liste)
     #print(batiment.get_building_difficulty("E000381"))
